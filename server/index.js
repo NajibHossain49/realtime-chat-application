@@ -26,6 +26,7 @@ io.on("connection", (socket) => {
   socket.on("send_message", (data) => {
     const { room, message } = data;
     socket.to(room).emit("receive_message", data);
+    console.log(`User ${socket.id} sent message to room ${room}: ${message}`);
   });
 
   socket.on("typing", ({ room, username }) => {
